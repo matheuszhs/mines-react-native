@@ -13,7 +13,7 @@ export default class App extends Component {
     minesAmount = () => {
         const cols = params.getColumnsAmount();
         const rows = params.getRowsAmount();
-        return Math.ceil(cols * row * params.difficultLevel);
+        return Math.ceil(cols * rows * params.difficultLevel);
     };
 
     createState = () => {
@@ -31,6 +31,9 @@ export default class App extends Component {
                     Tamanho da grade: {params.getRowsAmount()}x
                     {params.getColumnsAmount()}
                 </Text>
+                <View style={styles.board}>
+                    <MineField board={this.state.board} />
+                </View>
             </View>
         );
     }
@@ -39,18 +42,10 @@ export default class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#F5FCFF"
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: "center",
-        margin: 10
-    },
-    instructions: {
-        textAlign: "center",
-        color: "#333333",
-        marginBottom: 5
-    }
+        justifyContent: "flex-end",
+	},
+	board: {
+		alignItems: 'center',
+		backgroundColor: '#aaa'
+	}
 });
